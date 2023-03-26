@@ -1,0 +1,25 @@
+SELECT
+  cedula_usuario AS ID,
+  CAST(dia_solicitud AS TIMESTAMP) AS __time 
+FROM SENADIS_PdE
+WHERE dia_solicitud IS NOT NULL
+  AND expiracion is NOT NULL 
+  AND __time is NOT NULL
+
+UNION ALL
+SELECT
+  cedula_usuario AS ID,
+  __time
+  FROM SENADIS_PdE
+WHERE dia_solicitud IS NOT NULL
+  AND expiracion is NOT NULL 
+  AND __time is NOT NULL
+
+UNION ALL
+SELECT
+  cedula_usuario AS ID,  
+CAST(expiracion AS TIMESTAMP) AS __time 
+ FROM SENADIS_PdE
+WHERE dia_solicitud IS NOT NULL
+  AND expiracion is NOT NULL
+  AND __time is NOT NULL
